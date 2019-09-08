@@ -1,2 +1,3 @@
-# hackweek-project
-this is a moderation project bot that ill be doing for discord hackweek
+# Shiro
+this is my bot shiro, i've decided to make him open-source since the music has a hard time playing...
+if any code is copied/downloaded, please credit this (just add a note or smth)
