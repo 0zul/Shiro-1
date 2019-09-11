@@ -4,14 +4,14 @@ module.exports = {
      path: "../../commands/Misc/regextest.js",
      help: {
           name: "regextest",
-          aliases: ["regex"]
+          alias: "regex"
      },
      run: async (client,message) => {
               let regex =  message.content.replace( /  +/g," ").split(" ").slice(1).join(" ");
-              let input = a.split("|").slice(1).join(" ");
+              let input = message.content.replace( /  +/g," ").split(" | ").slice(1);
 			  let match = input.match(regex);
-              let i = 0;
-			   if(input.match(regex)){
+              		  let i = 0;
+			  if(input.match(regex)){
 					let embed = new discord.RichEmbed()
 					.setTitle("Regex Match")
 					.setColor("#00ff00")
