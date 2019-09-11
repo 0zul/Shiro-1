@@ -24,7 +24,7 @@ module.exports = {
 					.setTitle("No Match")
 					.setColor("#ff0000")
 					.addField("Regex:",regex)
-					.addField("Input:",input)
+					.addField("Input:",message.content.split(" | ")[1])
 					.setFooter(`by: ${message.member.displayName}`, message.member.displayAvatarURL)
 					message.channel.send(eembed);
 			   }
