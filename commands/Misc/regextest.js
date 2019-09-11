@@ -16,7 +16,7 @@ module.exports = {
 					.setColor("#00ff00")
 					.addField("Regex:",regex)
 					.addField("Input:",match.input)
-					match.slice(1,match.length-2).forEach(m => embed.addField(`Group ${++i}`,m))
+					match.slice(1,match.length).forEach(m => embed.addField(`Group ${++i}`,m))
 					embed.setFooter(`by: ${message.member.displayName}`, message.member.displayAvatarURL)
 					message.channel.send(embed);
 			   } else {
