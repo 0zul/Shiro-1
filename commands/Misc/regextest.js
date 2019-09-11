@@ -7,7 +7,7 @@ module.exports = {
           alias: "regex"
      },
      run: async (client,message) => {
-              		  let regex = message.content.split(" ").slice(1,2);
+              		  let regex = message.content.split(" ").slice(1);
 	      		  let match = message.content.split(" | ")[1].match(regex);
               		  let i = 0;
 			  if(match){
