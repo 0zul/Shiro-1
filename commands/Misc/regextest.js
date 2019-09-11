@@ -9,7 +9,7 @@ module.exports = {
      run: async (client,message) => {
               		  let regex =  message.content.split(" ").slice(1).join(" ");
               		  let input = message.content.split(" | ")[1];
-	      		  let match = input.match(regex);
+	      		  let match = eval(input.match(regex));
               		  let i = 0;
 			  if(match){
 					let embed = new discord.RichEmbed()
