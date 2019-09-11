@@ -24,7 +24,7 @@ const mem = message.mentions.members.first()||message.guild.members.get(id);
 
 if(!amount)return message.reply('i need an amount of messages to delete');
 //if(amount > 100)amount = 100;
-message.channel.messages.fetch({
+message.channel.fetchMessages({
  limit: amount,
 }).then((messages) => {
 if(logchnnel){
