@@ -17,7 +17,7 @@ module.exports = {
 					.addField("Regex:",regex)
 					.addField("Input:",match.input)
 					match.slice(1,match.length).forEach(m => embed.addField(`Group ${++i}`,m))
-					embed.setFooter(`by: ${message.member.displayName}`, message.member.displayAvatarURL)
+					embed.setFooter(`by: ${message.member.displayName}`, message.author.displayAvatarURL)
 					message.channel.send(embed);
 			   } else {
 					let eembed = new discord.RichEmbed()
@@ -25,7 +25,7 @@ module.exports = {
 					.setColor("#ff0000")
 					.addField("Regex:",regex)
 					.addField("Input:",message.content.split(" | ")[1])
-					.setFooter(`by: ${message.member.displayName}`, message.member.displayAvatarURL)
+					.setFooter(`by: ${message.member.displayName}`, message.author.displayAvatarURL)
 					message.channel.send(eembed);
 			   }
      }
