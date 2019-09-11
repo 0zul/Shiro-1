@@ -7,11 +7,11 @@ module.exports = {
           alias: "regex"
      },
      run: async (client,message) => {
-              let regex =  message.content.replace( /  +/g," ").split(" ").slice(1).join(" ");
-              let input = message.content.replace( /  +/g," ").split(" | ").slice(1);
-			  let match = input.match(regex);
+              		  let regex =  message.content.split(" ").slice(1).join(" ");
+              		  let input = message.content.split(" | ")[1];
+	      		  let match = input.match(regex);
               		  let i = 0;
-			  if(input.match(regex)){
+			  if(match){
 					let embed = new discord.RichEmbed()
 					.setTitle("Regex Match")
 					.setColor("#00ff00")
