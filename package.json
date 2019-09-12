@@ -32,6 +32,7 @@
     "ytdl-core": "^0.29.6",
     "ytdl-core-discord": "^1.0.3",
     "is-url": "^1.2.4",
-    "nekos-moosik": "^11.3.11"
+    "nekos-moosik": "^11.3.11",
+    "color-convert": "^2.0.1"
   }
 }
