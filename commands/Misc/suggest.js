@@ -21,15 +21,31 @@ module.exports = {
 		.then((collected) => {
 			console.log(collected.first().content);
 			if(collected.first().content.toLowerCase() === "yes"){
-				let e = new Discord.RichEmbed();
-				e.setAuthor(message.author.tag,message.author.displayAvatarURL)
-				e.setTitle("Command Suggestion")
-				e.setTimestamp()
-				e.setColor(message.member.displayHexColor ? message.member.displayHexColor : "#00d6ff")
-				e.addField("Command:", s[0])
-				e.addField("Example useage:",s[1])
-				e.addField("Command description:",s[2]);
-				message.channel.send("here ya go:",{e}).then(a => {a.delete(60000)});
+				message.channel.send("here ya go:",{
+				"embed": {
+						"title": "Command Suggestion inbound:",
+						"color": 55039,
+						"timestamp": new Date,
+						"author": {
+							"name": message.author.tag,
+							"icon_url": message.author.displayAvatarURL
+						},
+						"fields": [
+								{
+								"name": "Command:",
+								"value": s[0]
+								},
+								{
+								"name": "Example useage:",
+								"value": s[1]
+								},
+								{
+								"name": "Command description:",
+								"value": s[2]
+								}
+						]
+				}
+				}).then(a => {a.delete(60000)});
 			} 
           	if(collected.first().content.toLowerCase() === "no"){
 				m.edit('Your command suggestion has successfully been sent.');
