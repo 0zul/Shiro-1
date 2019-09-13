@@ -26,7 +26,7 @@ module.exports = {
 				message.channel.send("here ya go:",{
 				"embed": {
 						"title": "Command Suggestion inbound:",
-						"description": "✅ - Send message\n❎ - Disgard"
+						"description": "✅ - Send message\n❎ - Disgard",
 						"color": 55039,
 						"timestamp": new Date,
 						"author": {
