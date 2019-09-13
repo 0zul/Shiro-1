@@ -10,9 +10,11 @@ module.exports = {
 	run: async (client,message) => {
 		if(!message.content.includes(" | ")||message.content.replace( /  +/g, ' ').split(' ').slice(1,2).join(' ').toLowerCase()==="help")return message.channel.send("Command useage:\n```\n..suggest <command> | <detailed useage of command> | <what the command should do>```");
 		const s = message.content.replace( /  +/g, ' ').split(' ').slice(1).join(' ').split(" | ");
+        	if(!s[1])return message.channel.send("I need an example useage of the command for the suggestion");
+		if(!s[2])return message.channel.send("I need a description on what the command should do");
 
 		const servr = client.guilds.get("413921975312842752");
-		const suggestionchl = servr.channels.get("622040167045267466");
+		const suggestionchl = servr.channels.get("621969059101278231");
 		
 		message.channel.send(`Would you like to view your suggestion before it's sent out?\nIf yes type \`yes\`, if no type \`no\`.`)
 		.then((m) => {
@@ -65,7 +67,6 @@ module.exports = {
 			  });
 			  collector.on('collect', r => {
 					if (r.emoji.name === '✅'){//:white_check_mark:
-					    r.remove(message.author.id);
 						msg.reactions.forEach(r => {
 							r.remove();
 						});
@@ -129,12 +130,14 @@ module.exports = {
 										.setColor('#ff0000')
 										.setDescription(reason)
 										.setTimestamp()
+										mg.channel.send(`I let them know the bad news`);
 										message.author.send(den).catch(() => {
 										let deni = new Discord.RichEmbed()
 										.setAuthor('Thank You',client.users.get("377271843502948354").displayAvatarURL)
 										.setColor('#ff0000')
 										.setDescription(reason)
 										.setTimestamp()
+										mg.channel.send(`I let them know the bad news`);
 										message.reply('I tried to dm you this, but it appears your dm\'s are closed',{deni});
 										});
 									})
@@ -228,12 +231,14 @@ module.exports = {
 											.setColor('#ff0000')
 											.setDescription(reason)
 											.setTimestamp()
+											mw.channel.send(`I let them know the bad news`);
 											message.author.send(den).catch(() => {
 											let deni = new Discord.RichEmbed()
 											.setAuthor('Thank You',client.users.get("377271843502948354").displayAvatarURL)
 											.setColor('#ff0000')
 											.setDescription(reason)
 											.setTimestamp()
+											mw.channel.send(`I let them know the bad news`);
 											message.reply('I tried to dm you this, but it appears your dm\'s are closed',{deni});
 											});
 										})
