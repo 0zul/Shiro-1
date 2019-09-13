@@ -8,7 +8,7 @@ module.exports = {
 		useage: '..suggest <command> | <detailed useage of command> | <what the command should do>'
 	},
 	run: async (client,message) => {
-		if(!message.content.includes(" | ")||message.content.replace( /  +/g, ' ').split(' ').slice(1,2).join(' ').toLowerCase()==="help")return message.channel.send("Command useage:\n```\nNb.suggest <command> | <detailed useage of command> | <what the command should do>```");
+		if(!message.content.includes(" | ")||message.content.replace( /  +/g, ' ').split(' ').slice(1,2).join(' ').toLowerCase()==="help")return message.channel.send("Command useage:\n```\n..suggest <command> | <detailed useage of command> | <what the command should do>```");
 		let s = message.content.replace( /  +/g, ' ').split(' ').slice(1).join(' ').split(" | ");
 
 		message.channel.send(`Would you like to view your suggestion before it's sent out?\nIf yes type \`yes\`, if no type \`no\`.\n(This will be cancelled in 1 minute if no response.)`)
