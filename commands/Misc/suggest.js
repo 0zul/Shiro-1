@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 
 module.exports = {
-	path: '../../commands/Misc/suggest.js',
 	help: {
+		path: '../../commands/Misc/suggest.js',
 		name: 'suggest',
 		alias: 'command',
 		useage: '..suggest <command> | <detailed useage of command> | <what the command should do>'
@@ -12,9 +12,9 @@ module.exports = {
 		const s = message.content.replace( /  +/g, ' ').split(' ').slice(1).join(' ').split(" | ");
 
 		const servr = client.guilds.get("413921975312842752");
-		const suggestionchl = servr.channels.get("621969059101278231");
+		const suggestionchl = servr.channels.get("622040167045267466");
 		
-		message.channel.send(`Would you like to view your suggestion before it's sent out?\nIf yes type \`yes\`, if no type \`no\`.\n(This will be cancelled in 1 minute if no response.)`)
+		message.channel.send(`Would you like to view your suggestion before it's sent out?\nIf yes type \`yes\`, if no type \`no\`.`)
 		.then((m) => {
 		message.channel.awaitMessages(response => response.author.id === message.author.id, {
 			max: 1,
@@ -26,7 +26,6 @@ module.exports = {
 				message.channel.send("here ya go:",{
 				"embed": {
 						"title": "Command Suggestion inbound:",
-						"description": "✅ - Send message\n❎ - Disgard",
 						"color": 55039,
 						"timestamp": new Date,
 						"author": {
@@ -45,6 +44,16 @@ module.exports = {
 								{
 								"name": "Command description:",
 								"value": s[2]
+								},
+								{
+								"name": "✅",
+								"value": "Send message",
+								"inline": true
+								},
+								{
+								"name": "❎",
+								"value": "Disgard",
+								"inline": true
 								}
 						]
 				}
@@ -78,13 +87,12 @@ module.exports = {
 						});
 						collecto.on('collect', r => {
 								if (r.emoji.name === '✅') {//:white_check_mark:
-									r.remove("377271843502948354");
 									mg.reactions.forEach(r => {
 										r.remove();
 									});
 									embod.setColor("#00ff00")
 									embod.setTimestamp()
-									embod.setFooter(`✅ Approved`,client.users.get("377271843502948354").displayAvatarURL)
+									embod.setFooter(`Approved`,client.users.get("377271843502948354").displayAvatarURL)
 									mg.edit(embod).then(m => m.pin());
 									let apr = new Discord.RichEmbed()
 										.setAuthor('Thank You',client.users.get("377271843502948354").displayAvatarURL)
@@ -101,13 +109,12 @@ module.exports = {
 									});
 								}
 								if(r.emoji.name === '❎') {//:negative_squared_cross_mark:
-									r.remove("377271843502948354");
 									mg.reactions.forEach(r => {
 										r.remove();
 									});
 									embod.setColor("#ff0000")
 									embod.setTimestamp()
-									embod.setFooter(`❎ Denied`,client.users.get("377271843502948354").displayAvatarURL)
+									embod.setFooter(`Denied`,client.users.get("377271843502948354").displayAvatarURL)
 									mg.edit(embod);
 									mg.channel.send(`Why did you deny this request?`)
 									.then((m) => {
@@ -146,7 +153,6 @@ module.exports = {
 						});
                     }
 					if(r.emoji.name === '❎') {//:negative_squared_cross_mark:
-						r.remove(message.author.id);
 						msg.reactions.forEach(r => {
 							r.remove();
 						});
@@ -157,7 +163,7 @@ module.exports = {
 					msg.reactions.forEach(r => {
 						r.remove();
 					});
-					return message.channel.send("Message Disgarded");
+					return msg.edit("Message Disgarded [Timeout]");
 				}); 
 				});
 			}
@@ -180,13 +186,12 @@ module.exports = {
 							});
 							collector.on('collect', r => {
 									if(r.emoji.name === '✅') {//:white_check_mark:
-										r.remove("377271843502948354");
 										mw.reactions.forEach(r => {
 											r.remove();
 										});
 										embed.setColor("#00ff00")
 										embed.setTimestamp()
-										embed.setFooter(`✅ Approved`,client.users.get("377271843502948354").displayAvatarURL)
+										embed.setFooter(`Approved`,client.users.get("377271843502948354").displayAvatarURL)
 										mw.edit(embed).then(m => m.pin());
 										let apr1 = new Discord.RichEmbed()
 											.setAuthor('Thank You',client.users.get("377271843502948354").displayAvatarURL)
@@ -203,13 +208,12 @@ module.exports = {
 										});
 									}
 									if(r.emoji.name === '❎') {//:negative_squared_cross_mark:
-										r.remove("377271843502948354");
 										mw.reactions.forEach(r => {
 											r.remove();
 										});
 										embed.setColor("#ff0000")
 										embed.setTimestamp()
-										embed.setFooter(`❎ Denied`,client.users.get("377271843502948354").displayAvatarURL)
+										embed.setFooter(`Denied`,client.users.get("377271843502948354").displayAvatarURL)
 										mw.edit(embed);
 										mw.channel.send(`Why did you deny this request?`)
 										.then((me) => {
@@ -249,7 +253,7 @@ module.exports = {
 				
 			}
 		}).catch(() => {
-			m.edit('"Command suggestion Disgarded"\n[Timed out]');
+			m.edit('Command suggestion Disgarded [Timed out]');
 		});
 		});
 	}
