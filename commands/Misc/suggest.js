@@ -4,7 +4,7 @@ module.exports = {
 	path: '../../commands/Misc/suggest.js',
 	help: {
 		name: 'suggest',
-		alias: 'suggestcommand',
+		alias: 'command',
 		useage: '..suggest <command> | <detailed useage of command> | <what the command should do>'
 	},
 	run: async (client,message) => {
@@ -19,16 +19,17 @@ module.exports = {
 			errors: ['time'],
         })
 		.then((collected) => {
+			console.log(collected.first().content);
 			if(collected.first().content.toLowerCase() === "yes"){
-				let e = new Discord.RichEmbed()
-				.setAuthor(message.author.tag,message.author.displayAvatarURL)
-				.setTitle("Command Suggestion")
-				.setTimestamp()
-				.setColor(message.member.displayHexColor ? message.member.displayHexColor : "#00d6ff")
-				.addField("Command:", s[0])
-				.addField("Example useage:",s[1])
-				.addField("Command description:",s[2])
-				message.channel.send("here ya go:",{e}).then(a => a.delete(60000));
+				let e = new Discord.RichEmbed();
+				e.setAuthor(message.author.tag,message.author.displayAvatarURL)
+				e.setTitle("Command Suggestion")
+				e.setTimestamp()
+				e.setColor(message.member.displayHexColor ? message.member.displayHexColor : "#00d6ff")
+				e.addField("Command:", s[0])
+				e.addField("Example useage:",s[1])
+				e.addField("Command description:",s[2]);
+				message.channel.send("here ya go:",{e}).then(a => {a.delete(60000)});
 			} 
           	if(collected.first().content.toLowerCase() === "no"){
 				m.edit('Your command suggestion has successfully been sent.');
