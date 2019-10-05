@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const moment = require('moment');
 
 module.exports = {
-	path: '../../commands/information/userinfo.js',
+	path: '../../commands/Misc/userinfo.js',
 	help: {
 		name: 'userinfo',
-		aliases: ['ui'],
+		alias: 'ui',
 		enabled: true,
 		guildOnly: true,
 		permLevel: 0,
