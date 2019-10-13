@@ -1,5 +1,5 @@
 {
-  "name": "Shiro",
+  "name": "cancer-botto",
   "version": "1.0.2",
   "description": "is bot?",
   "main": "bot.js",
@@ -29,7 +29,8 @@
     "color-convert": "^2.0.1",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.1",
-    "electron": "^6.0.10"
+    "electron": "^6.0.10",
+    "quick.db": "^6.3.2"
   },
   "scripts": {
     "start": "node bot.js"
